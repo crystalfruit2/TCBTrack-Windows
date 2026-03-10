@@ -59,3 +59,51 @@ The final verified command to run the tracker on a CPU:
 
 Bash
 python tools/track2.py -f exps/example/mot/mot17.py -c models/mot17.pth.tar -b 1 -d 0
+
+6. Dataset Annotation Conversion (COCO Format)
+The MOT17 dataset natively provides ground truth tracking data in .txt format, but the YOLOX backbone strictly requires a unified COCO .json dictionary.
+
+Create Annotations Folder: Ensure TCB/datasets/mot/annotations/ exists.
+
+Run Converter:
+
+Bash
+cd <TCBTrack_HOME>/TCB
+python tools/convert_mot17_to_coco.py
+The "Single File" Hack: Because we manually generated our Windows validation split earlier, the script bundles everything into train.json.
+
+Navigate to TCB/datasets/mot/annotations/.
+
+Copy train.json and rename the copy to val_half.json.
+
+7. The Windows "Double Extension" Trap
+When downloading bytetrack_x_mot17.pth.tar, Windows may hide the known file extension, resulting in the file secretly being named mot17.pth.tar.tar.
+
+Fix: Enable "File name extensions" in Windows File Explorer View settings and verify the file is strictly named mot17.pth.tar so PyTorch can locate it.
+
+8. Modern GPU Compatibility Fixes (RTX 5000-series / Blackwell)
+Running older PyTorch code on next-generation hardware (like the RTX 5060 Ti sm_120 architecture) causes two distinct hardware crashes that require manual patching.
+
+Issue A: Silent Freeze at 0%
+Cause: The --fp16 flag attempts to use mixed-precision Tensor Core hardware acceleration that the older PyTorch version does not map correctly for Blackwell GPUs.
+
+Fix: Remove --fp16 from the execution command entirely to enforce standard 32-bit float operations.
+
+Issue B: CUDA torchvision::nms NotImplementedError
+Cause: The older torchvision C++ backend lacks the compiled NMS (Non-Maximum Suppression) operator for the newest NVIDIA architectures, causing a hard crash at the end of every inference step.
+
+Fix (The Surgical CPU Patch): Intercept the tensor and force the NMS operator to run on the CPU.
+
+Open TCB/yolox/evaluators/mot_evaluator_dancetrack.py (Note: MOT17 evaluation is hardcoded to route through this DanceTrack file).
+
+Locate line 300:
+outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+
+Add .cpu() to the outputs tensor:
+outputs = postprocess(outputs.cpu(),self.num_classes,self.confthre,self.nmsthre)
+
+9. Final Verified Execution Command
+Once all patches are applied, run the tracker utilizing the GPU (-d 1) but avoiding hardware-specific acceleration flags:
+
+Bash
+python tools/track2.py -f exps/example/mot/mot17.py -c models/mot17.pth.tar -b 1 -d 1 --
