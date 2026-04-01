@@ -1,0 +1,869 @@
+2026-03-10 20:28:23.912 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:28:24.232 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:28:24.232 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (10844), thread 'MainThread' (27272):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x000001EA87E51040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x000001EAB9F2D550>
+
+  File "tools/track2.py", line 170, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   └ <function Exp.get_eval_loader at 0x000001EAB9F2DEE0>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "C:\Users\User\Desktop\LabProje\TCBTrack\TCB\exps/example/mot\mot17.py", line 190, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\data\datasets\mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'val_half.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x000001EABAF2A6D0>
+    │           │    │  │    │    │    └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x000001EABAF2A6D0>
+    │           │    │  │    └ <function join at 0x000001EAC97B8E50>
+    │           │    │  └ <module 'ntpath' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\ntpath.py'>
+    │           │    └ <module 'os' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x000001EABAF2A6D0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\pycocotools\coco.py", line 81, in __init__
+    with open(annotation_file, 'r') as f:
+              └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+2026-03-10 20:30:18.492 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:30:18.781 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:30:18.781 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (30256), thread 'MainThread' (6664):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x0000026E3E471040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x0000026E7054E550>
+
+  File "tools/track2.py", line 170, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   └ <function Exp.get_eval_loader at 0x0000026E7054EEE0>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "C:\Users\User\Desktop\LabProje\TCBTrack\TCB\exps/example/mot\mot17.py", line 190, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\data\datasets\mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'val_half.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x0000026E715B0310>
+    │           │    │  │    │    │    └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x0000026E715B0310>
+    │           │    │  │    └ <function join at 0x0000026E7FFA8E50>
+    │           │    │  └ <module 'ntpath' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\ntpath.py'>
+    │           │    └ <module 'os' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x0000026E715B0310>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\pycocotools\coco.py", line 81, in __init__
+    with open(annotation_file, 'r') as f:
+              └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+2026-03-10 20:36:11.725 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:36:12.035 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:36:12.035 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (25040), thread 'MainThread' (8508):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x000001DC9D2A0040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x000001DCCF37E550>
+
+  File "tools/track2.py", line 170, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps...
+                 │   └ <function Exp.get_eval_loader at 0x000001DCCF37EEE0>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "C:\Users\User\Desktop\LabProje\TCBTrack\TCB\exps/example/mot\mot17.py", line 190, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\data\datasets\mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'val_half.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x000001DCD03E02E0>
+    │           │    │  │    │    │    └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x000001DCD03E02E0>
+    │           │    │  │    └ <function join at 0x000001DCDECD8E50>
+    │           │    │  └ <module 'ntpath' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\ntpath.py'>
+    │           │    └ <module 'os' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x000001DCD03E02E0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\pycocotools\coco.py", line 81, in __init__
+    with open(annotation_file, 'r') as f:
+              └ 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\users\\user\\desktop\\labproje\\tcbtrack\\tcb\\datasets\\mot\\annotations\\val_half.json'
+2026-03-10 20:39:37.064 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:39:37.364 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:39:37.384 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2026-03-10 20:39:37.386 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:39:37.386 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:39:37.658 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:39:37.658 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (29988), thread 'MainThread' (28704):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x000001758F321040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x00000175C13FE550>
+
+  File "tools/track2.py", line 191, in main
+    ckpt = torch.load(ckpt_file, map_location=loc)
+           │     │    │                       └ 'cuda:0'
+           │     │    └ 'models/mot17.pth.tar'
+           │     └ <function load at 0x00000175FFCD5A60>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\serialization.py", line 1065, in load
+    with _open_file_like(f, 'rb') as opened_file:
+         │               └ 'models/mot17.pth.tar'
+         └ <function _open_file_like at 0x00000175FFCD3DC0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\serialization.py", line 468, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           │          │               └ 'rb'
+           │          └ 'models/mot17.pth.tar'
+           └ <class 'torch.serialization._open_file'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\serialization.py", line 449, in __init__
+    super().__init__(open(name, mode))
+                          │     └ 'rb'
+                          └ 'models/mot17.pth.tar'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'models/mot17.pth.tar'
+2026-03-10 20:42:15.985 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:42:16.284 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:42:16.302 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2026-03-10 20:42:16.302 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:42:16.312 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:42:16.517 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:42:16.979 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:42:16.979 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:45:07.987 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (21100), thread 'MainThread' (29000):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x0000018607561040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════╕
+    │            │ keys  ...
+    └ <function main at 0x000001863963E550>
+
+  File "tools/track2.py", line 224, in main
+    *_, summary = evaluator.evaluate_TCB(
+                  │         └ <function MOTEvaluator.evaluate_TCB at 0x0000018638734160>
+                  └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000186396415B0>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\evaluators\mot_evaluator_dancetrack.py", line 300, in evaluate_TCB
+    outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+              │           │       │    │           │    │        │    └ 0.7
+              │           │       │    │           │    │        └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000186396415B0>
+              │           │       │    │           │    └ 0.01
+              │           │       │    │           └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000186396415B0>
+              │           │       │    └ 1
+              │           │       └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000186396415B0>
+              │           └ tensor([[[-2.1700e+02, -4.2050e+02,  7.5000e+01,  ...,  4.5837e-02,
+              │                       -1.0571e-01, -1.5259e-05],
+              │                      [-1.6312e+0...
+              └ <function postprocess at 0x0000018607136D30>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\utils\boxes.py", line 63, in postprocess
+    nms_out_index = torchvision.ops.batched_nms(
+                    │           │   └ <function batched_nms at 0x00000186047580D0>
+                    │           └ <module 'torchvision.ops' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\ops\\__init__.py'>
+                    └ <module 'torchvision' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 75, in batched_nms
+    return _batched_nms_coordinate_trick(boxes, scores, idxs, iou_threshold)
+           │                             │      │       │     └ 0.7
+           │                             │      │       └ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           │                             │      │                 0., 0., 0., 0...
+           │                             │      └ tensor([0.0456, 0.0526, 0.3243, 0.8659, 0.8669, 0.8593, 0.6648, 0.8713, 0.8741,
+           │                             │                0.8630, 0.0956, 0.8727, 0.8678, 0.861...
+           │                             └ tensor([[ 429.7500,  318.7500,  443.2500,  349.7500],
+           │                                       [ 441.2500,  317.7500,  453.7500,  347.7500],
+           │                                       [ 441.250...
+           └ <function _batched_nms_coordinate_trick at 0x00000186047581F0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\jit\_trace.py", line 1441, in wrapper
+    return fn(*args, **kwargs)
+           │   │       └ {}
+           │   └ (tensor([[ 429.7500,  318.7500,  443.2500,  349.7500],
+           │             [ 441.2500,  317.7500,  453.7500,  347.7500],
+           │             [ 441.25...
+           └ <function _batched_nms_coordinate_trick at 0x0000018604758160>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 94, in _batched_nms_coordinate_trick
+    keep = nms(boxes_for_nms, scores, iou_threshold)
+           │   │              │       └ 0.7
+           │   │              └ tensor([0.0456, 0.0526, 0.3243, 0.8659, 0.8669, 0.8593, 0.6648, 0.8713, 0.8741,
+           │   │                        0.8630, 0.0956, 0.8727, 0.8678, 0.861...
+           │   └ tensor([[ 429.7500,  318.7500,  443.2500,  349.7500],
+           │             [ 441.2500,  317.7500,  453.7500,  347.7500],
+           │             [ 441.250...
+           └ <function nms at 0x00000186047504C0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 41, in nms
+    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)
+           │     │   │           │   │      │       └ 0.7
+           │     │   │           │   │      └ tensor([0.0456, 0.0526, 0.3243, 0.8659, 0.8669, 0.8593, 0.6648, 0.8713, 0.8741,
+           │     │   │           │   │                0.8630, 0.0956, 0.8727, 0.8678, 0.861...
+           │     │   │           │   └ tensor([[ 429.7500,  318.7500,  443.2500,  349.7500],
+           │     │   │           │             [ 441.2500,  317.7500,  453.7500,  347.7500],
+           │     │   │           │             [ 441.250...
+           │     │   │           └ <OpOverloadPacket(op='torchvision.nms')>
+           │     │   └ <module 'torch.ops.torchvision' from 'torch.ops'>
+           │     └ <module 'torch.ops' from '_ops.py'>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+           │     │    │        └ {}
+           │     │    └ (tensor([[ 429.7500,  318.7500,  443.2500,  349.7500],
+           │     │              [ 441.2500,  317.7500,  453.7500,  347.7500],
+           │     │              [ 441.25...
+           │     └ <built-in method nms of PyCapsule object at 0x00000186472AB900>
+           └ <OpOverloadPacket(op='torchvision.nms')>
+
+NotImplementedError: Could not run 'torchvision::nms' with arguments from the 'CUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'torchvision::nms' is only available for these backends: [CPU, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradXLA, AutogradMPS, AutogradXPU, AutogradHPU, AutogradLazy, AutogradMeta, Tracer, AutocastCPU, AutocastXPU, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+CPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\cpu\nms_kernel.cpp:112 [kernel]
+Meta: registered at /dev/null:154 [kernel]
+QuantizedCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\quantized\cpu\qnms_kernel.cpp:124 [kernel]
+BackendSelect: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:153 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:497 [backend fallback]
+Functionalize: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\FunctionalizeFallbackKernel.cpp:349 [backend fallback]
+Named: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\NamedRegistrations.cpp:7 [backend fallback]
+Conjugate: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ZeroTensorFallback.cpp:86 [backend fallback]
+ADInplaceOrView: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:86 [backend fallback]
+AutogradOther: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:53 [backend fallback]
+AutogradCPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:57 [backend fallback]
+AutogradCUDA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:65 [backend fallback]
+AutogradXLA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:69 [backend fallback]
+AutogradMPS: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:77 [backend fallback]
+AutogradXPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:61 [backend fallback]
+AutogradHPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:90 [backend fallback]
+AutogradLazy: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:73 [backend fallback]
+AutogradMeta: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:81 [backend fallback]
+Tracer: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\autograd\TraceTypeManual.cpp:297 [backend fallback]
+AutocastCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:34 [kernel]
+AutocastXPU: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\autocast_mode.cpp:351 [backend fallback]
+AutocastCUDA: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:27 [kernel]
+FuncTorchBatched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:731 [backend fallback]
+BatchedNestedTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:758 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\VmapModeRegistrations.cpp:27 [backend fallback]
+Batched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\LegacyBatchingRegistrations.cpp:1075 [backend fallback]
+VmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\VmapModeRegistrations.cpp:33 [backend fallback]
+FuncTorchGradWrapper: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\TensorWrapper.cpp:207 [backend fallback]
+PythonTLSSnapshot: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:161 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:493 [backend fallback]
+PreDispatch: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:165 [backend fallback]
+PythonDispatcher: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:157 [backend fallback]
+
+2026-03-10 20:46:33.309 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:46:33.607 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:46:33.622 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2026-03-10 20:46:33.622 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:46:33.622 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:46:33.832 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:46:34.216 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:46:34.216 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:48:22.732 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=False, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:48:23.017 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:48:23.032 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.01s)
+2026-03-10 20:48:23.032 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:48:23.032 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:48:23.222 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:48:23.556 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:48:23.556 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:49:13.222 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (26056), thread 'MainThread' (29364):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x00000173CD261040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════╕
+    │            │ keys  ...
+    └ <function main at 0x00000173FF33D550>
+
+  File "tools/track2.py", line 224, in main
+    *_, summary = evaluator.evaluate_TCB(
+                  │         └ <function MOTEvaluator.evaluate_TCB at 0x00000173FD463160>
+                  └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000173805114C0>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\evaluators\mot_evaluator_dancetrack.py", line 300, in evaluate_TCB
+    outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+              │           │       │    │           │    │        │    └ 0.7
+              │           │       │    │           │    │        └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000173805114C0>
+              │           │       │    │           │    └ 0.01
+              │           │       │    │           └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000173805114C0>
+              │           │       │    └ 1
+              │           │       └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x00000173805114C0>
+              │           └ tensor([[[-2.1709e+02, -4.2022e+02,  7.5332e+01,  ...,  9.9903e-02,
+              │                        7.8900e-02, -1.5557e-02],
+              │                      [-1.6310e+0...
+              └ <function postprocess at 0x00000173CCE66D30>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\utils\boxes.py", line 63, in postprocess
+    nms_out_index = torchvision.ops.batched_nms(
+                    │           │   └ <function batched_nms at 0x00000173CA4580D0>
+                    │           └ <module 'torchvision.ops' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\ops\\__init__.py'>
+                    └ <module 'torchvision' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 75, in batched_nms
+    return _batched_nms_coordinate_trick(boxes, scores, idxs, iou_threshold)
+           │                             │      │       │     └ 0.7
+           │                             │      │       └ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           │                             │      │                 0., 0., 0., 0...
+           │                             │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │                             │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │                             └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │                                       [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │                                       [ 441.379...
+           └ <function _batched_nms_coordinate_trick at 0x00000173CA4581F0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\jit\_trace.py", line 1441, in wrapper
+    return fn(*args, **kwargs)
+           │   │       └ {}
+           │   └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.37...
+           └ <function _batched_nms_coordinate_trick at 0x00000173CA458160>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 94, in _batched_nms_coordinate_trick
+    keep = nms(boxes_for_nms, scores, iou_threshold)
+           │   │              │       └ 0.7
+           │   │              └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │   │                        0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.379...
+           └ <function nms at 0x00000173CA4514C0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 41, in nms
+    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)
+           │     │   │           │   │      │       └ 0.7
+           │     │   │           │   │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │     │   │           │   │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │     │   │           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │   │           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │   │           │             [ 441.379...
+           │     │   │           └ <OpOverloadPacket(op='torchvision.nms')>
+           │     │   └ <module 'torch.ops.torchvision' from 'torch.ops'>
+           │     └ <module 'torch.ops' from '_ops.py'>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+           │     │    │        └ {}
+           │     │    └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │              [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │              [ 441.37...
+           │     └ <built-in method nms of PyCapsule object at 0x000001764FEB5A50>
+           └ <OpOverloadPacket(op='torchvision.nms')>
+
+NotImplementedError: Could not run 'torchvision::nms' with arguments from the 'CUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'torchvision::nms' is only available for these backends: [CPU, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradXLA, AutogradMPS, AutogradXPU, AutogradHPU, AutogradLazy, AutogradMeta, Tracer, AutocastCPU, AutocastXPU, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+CPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\cpu\nms_kernel.cpp:112 [kernel]
+Meta: registered at /dev/null:154 [kernel]
+QuantizedCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\quantized\cpu\qnms_kernel.cpp:124 [kernel]
+BackendSelect: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:153 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:497 [backend fallback]
+Functionalize: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\FunctionalizeFallbackKernel.cpp:349 [backend fallback]
+Named: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\NamedRegistrations.cpp:7 [backend fallback]
+Conjugate: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ZeroTensorFallback.cpp:86 [backend fallback]
+ADInplaceOrView: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:86 [backend fallback]
+AutogradOther: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:53 [backend fallback]
+AutogradCPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:57 [backend fallback]
+AutogradCUDA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:65 [backend fallback]
+AutogradXLA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:69 [backend fallback]
+AutogradMPS: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:77 [backend fallback]
+AutogradXPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:61 [backend fallback]
+AutogradHPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:90 [backend fallback]
+AutogradLazy: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:73 [backend fallback]
+AutogradMeta: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:81 [backend fallback]
+Tracer: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\autograd\TraceTypeManual.cpp:297 [backend fallback]
+AutocastCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:34 [kernel]
+AutocastXPU: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\autocast_mode.cpp:351 [backend fallback]
+AutocastCUDA: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:27 [kernel]
+FuncTorchBatched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:731 [backend fallback]
+BatchedNestedTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:758 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\VmapModeRegistrations.cpp:27 [backend fallback]
+Batched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\LegacyBatchingRegistrations.cpp:1075 [backend fallback]
+VmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\VmapModeRegistrations.cpp:33 [backend fallback]
+FuncTorchGradWrapper: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\TensorWrapper.cpp:207 [backend fallback]
+PythonTLSSnapshot: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:161 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:493 [backend fallback]
+PreDispatch: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:165 [backend fallback]
+PythonDispatcher: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:157 [backend fallback]
+
+2026-03-10 20:49:20.737 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=0, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=False, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:49:21.032 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:49:21.053 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2026-03-10 20:49:21.053 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:49:21.053 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:49:21.232 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:49:21.562 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:49:21.562 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:49:41.768 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (27148), thread 'MainThread' (24520):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x000001E6AD321040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════╕
+    │            │ keys  ...
+    └ <function main at 0x000001E6DF3FD550>
+
+  File "tools/track2.py", line 224, in main
+    *_, summary = evaluator.evaluate_TCB(
+                  │         └ <function MOTEvaluator.evaluate_TCB at 0x000001E6DD524160>
+                  └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x000001E6DF400700>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\evaluators\mot_evaluator_dancetrack.py", line 300, in evaluate_TCB
+    outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+              │           │       │    │           │    │        │    └ 0.7
+              │           │       │    │           │    │        └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x000001E6DF400700>
+              │           │       │    │           │    └ 0.01
+              │           │       │    │           └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x000001E6DF400700>
+              │           │       │    └ 1
+              │           │       └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x000001E6DF400700>
+              │           └ tensor([[[-2.1709e+02, -4.2022e+02,  7.5332e+01,  ..., -1.0834e-01,
+              │                       -2.5220e-02, -8.9797e-03],
+              │                      [-1.6310e+0...
+              └ <function postprocess at 0x000001E6ACEF6D30>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\utils\boxes.py", line 63, in postprocess
+    nms_out_index = torchvision.ops.batched_nms(
+                    │           │   └ <function batched_nms at 0x000001E6AA5160D0>
+                    │           └ <module 'torchvision.ops' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\ops\\__init__.py'>
+                    └ <module 'torchvision' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 75, in batched_nms
+    return _batched_nms_coordinate_trick(boxes, scores, idxs, iou_threshold)
+           │                             │      │       │     └ 0.7
+           │                             │      │       └ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           │                             │      │                 0., 0., 0., 0...
+           │                             │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │                             │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │                             └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │                                       [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │                                       [ 441.379...
+           └ <function _batched_nms_coordinate_trick at 0x000001E6AA5161F0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\jit\_trace.py", line 1441, in wrapper
+    return fn(*args, **kwargs)
+           │   │       └ {}
+           │   └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.37...
+           └ <function _batched_nms_coordinate_trick at 0x000001E6AA516160>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 94, in _batched_nms_coordinate_trick
+    keep = nms(boxes_for_nms, scores, iou_threshold)
+           │   │              │       └ 0.7
+           │   │              └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │   │                        0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.379...
+           └ <function nms at 0x000001E6AA5104C0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 41, in nms
+    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)
+           │     │   │           │   │      │       └ 0.7
+           │     │   │           │   │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │     │   │           │   │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │     │   │           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │   │           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │   │           │             [ 441.379...
+           │     │   │           └ <OpOverloadPacket(op='torchvision.nms')>
+           │     │   └ <module 'torch.ops.torchvision' from 'torch.ops'>
+           │     └ <module 'torch.ops' from '_ops.py'>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+           │     │    │        └ {}
+           │     │    └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │              [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │              [ 441.37...
+           │     └ <built-in method nms of PyCapsule object at 0x000001E9506682D0>
+           └ <OpOverloadPacket(op='torchvision.nms')>
+
+NotImplementedError: Could not run 'torchvision::nms' with arguments from the 'CUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'torchvision::nms' is only available for these backends: [CPU, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradXLA, AutogradMPS, AutogradXPU, AutogradHPU, AutogradLazy, AutogradMeta, Tracer, AutocastCPU, AutocastXPU, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+CPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\cpu\nms_kernel.cpp:112 [kernel]
+Meta: registered at /dev/null:154 [kernel]
+QuantizedCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\quantized\cpu\qnms_kernel.cpp:124 [kernel]
+BackendSelect: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:153 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:497 [backend fallback]
+Functionalize: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\FunctionalizeFallbackKernel.cpp:349 [backend fallback]
+Named: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\NamedRegistrations.cpp:7 [backend fallback]
+Conjugate: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ZeroTensorFallback.cpp:86 [backend fallback]
+ADInplaceOrView: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:86 [backend fallback]
+AutogradOther: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:53 [backend fallback]
+AutogradCPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:57 [backend fallback]
+AutogradCUDA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:65 [backend fallback]
+AutogradXLA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:69 [backend fallback]
+AutogradMPS: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:77 [backend fallback]
+AutogradXPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:61 [backend fallback]
+AutogradHPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:90 [backend fallback]
+AutogradLazy: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:73 [backend fallback]
+AutogradMeta: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:81 [backend fallback]
+Tracer: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\autograd\TraceTypeManual.cpp:297 [backend fallback]
+AutocastCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:34 [kernel]
+AutocastXPU: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\autocast_mode.cpp:351 [backend fallback]
+AutocastCUDA: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:27 [kernel]
+FuncTorchBatched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:731 [backend fallback]
+BatchedNestedTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:758 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\VmapModeRegistrations.cpp:27 [backend fallback]
+Batched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\LegacyBatchingRegistrations.cpp:1075 [backend fallback]
+VmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\VmapModeRegistrations.cpp:33 [backend fallback]
+FuncTorchGradWrapper: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\TensorWrapper.cpp:207 [backend fallback]
+PythonTLSSnapshot: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:161 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:493 [backend fallback]
+PreDispatch: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:165 [backend fallback]
+PythonDispatcher: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:157 [backend fallback]
+
+2026-03-10 20:50:55.183 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=0, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=False, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:50:55.471 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:50:55.483 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.01s)
+2026-03-10 20:50:55.483 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:50:55.492 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:50:55.667 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:50:56.000 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:50:56.000 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:51:07.408 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (7752), thread 'MainThread' (28228):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x0000024B364AF040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════╕
+    │            │ keys  ...
+    └ <function main at 0x0000024B6858D550>
+
+  File "tools/track2.py", line 224, in main
+    *_, summary = evaluator.evaluate_TCB(
+                  │         └ <function MOTEvaluator.evaluate_TCB at 0x0000024B67684160>
+                  └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000024B68590610>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\evaluators\mot_evaluator_dancetrack.py", line 300, in evaluate_TCB
+    outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+              │           │       │    │           │    │        │    └ 0.7
+              │           │       │    │           │    │        └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000024B68590610>
+              │           │       │    │           │    └ 0.01
+              │           │       │    │           └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000024B68590610>
+              │           │       │    └ 1
+              │           │       └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000024B68590610>
+              │           └ tensor([[[-2.1709e+02, -4.2022e+02,  7.5332e+01,  ...,  5.6626e-02,
+              │                        1.0542e-01,  1.0266e-01],
+              │                      [-1.6310e+0...
+              └ <function postprocess at 0x0000024B36087D30>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\utils\boxes.py", line 63, in postprocess
+    nms_out_index = torchvision.ops.batched_nms(
+                    │           │   └ <function batched_nms at 0x0000024B346780D0>
+                    │           └ <module 'torchvision.ops' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\ops\\__init__.py'>
+                    └ <module 'torchvision' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 75, in batched_nms
+    return _batched_nms_coordinate_trick(boxes, scores, idxs, iou_threshold)
+           │                             │      │       │     └ 0.7
+           │                             │      │       └ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           │                             │      │                 0., 0., 0., 0...
+           │                             │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │                             │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │                             └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │                                       [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │                                       [ 441.379...
+           └ <function _batched_nms_coordinate_trick at 0x0000024B346781F0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\jit\_trace.py", line 1441, in wrapper
+    return fn(*args, **kwargs)
+           │   │       └ {}
+           │   └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.37...
+           └ <function _batched_nms_coordinate_trick at 0x0000024B34678160>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 94, in _batched_nms_coordinate_trick
+    keep = nms(boxes_for_nms, scores, iou_threshold)
+           │   │              │       └ 0.7
+           │   │              └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │   │                        0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.379...
+           └ <function nms at 0x0000024B346704C0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 41, in nms
+    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)
+           │     │   │           │   │      │       └ 0.7
+           │     │   │           │   │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │     │   │           │   │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │     │   │           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │   │           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │   │           │             [ 441.379...
+           │     │   │           └ <OpOverloadPacket(op='torchvision.nms')>
+           │     │   └ <module 'torch.ops.torchvision' from 'torch.ops'>
+           │     └ <module 'torch.ops' from '_ops.py'>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+           │     │    │        └ {}
+           │     │    └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │              [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │              [ 441.37...
+           │     └ <built-in method nms of PyCapsule object at 0x0000024DD06435A0>
+           └ <OpOverloadPacket(op='torchvision.nms')>
+
+NotImplementedError: Could not run 'torchvision::nms' with arguments from the 'CUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'torchvision::nms' is only available for these backends: [CPU, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradXLA, AutogradMPS, AutogradXPU, AutogradHPU, AutogradLazy, AutogradMeta, Tracer, AutocastCPU, AutocastXPU, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+CPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\cpu\nms_kernel.cpp:112 [kernel]
+Meta: registered at /dev/null:154 [kernel]
+QuantizedCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\quantized\cpu\qnms_kernel.cpp:124 [kernel]
+BackendSelect: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:153 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:497 [backend fallback]
+Functionalize: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\FunctionalizeFallbackKernel.cpp:349 [backend fallback]
+Named: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\NamedRegistrations.cpp:7 [backend fallback]
+Conjugate: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ZeroTensorFallback.cpp:86 [backend fallback]
+ADInplaceOrView: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:86 [backend fallback]
+AutogradOther: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:53 [backend fallback]
+AutogradCPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:57 [backend fallback]
+AutogradCUDA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:65 [backend fallback]
+AutogradXLA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:69 [backend fallback]
+AutogradMPS: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:77 [backend fallback]
+AutogradXPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:61 [backend fallback]
+AutogradHPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:90 [backend fallback]
+AutogradLazy: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:73 [backend fallback]
+AutogradMeta: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:81 [backend fallback]
+Tracer: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\autograd\TraceTypeManual.cpp:297 [backend fallback]
+AutocastCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:34 [kernel]
+AutocastXPU: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\autocast_mode.cpp:351 [backend fallback]
+AutocastCUDA: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:27 [kernel]
+FuncTorchBatched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:731 [backend fallback]
+BatchedNestedTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:758 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\VmapModeRegistrations.cpp:27 [backend fallback]
+Batched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\LegacyBatchingRegistrations.cpp:1075 [backend fallback]
+VmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\VmapModeRegistrations.cpp:33 [backend fallback]
+FuncTorchGradWrapper: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\TensorWrapper.cpp:207 [backend fallback]
+PythonTLSSnapshot: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:161 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:493 [backend fallback]
+PreDispatch: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:165 [backend fallback]
+PythonDispatcher: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:157 [backend fallback]
+
+2026-03-10 20:53:44.010 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=0, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=False, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:53:44.301 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:53:44.321 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2026-03-10 20:53:44.321 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:53:44.322 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:53:44.511 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:53:44.856 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:53:44.856 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 20:54:07.784 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (10928), thread 'MainThread' (24844):
+Traceback (most recent call last):
+
+  File "tools/track2.py", line 302, in <module>
+    launch(
+    └ <function launch at 0x0000018666921040>
+
+> File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\core\launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════╕
+    │            │ keys  ...
+    └ <function main at 0x0000018618A2D550>
+
+  File "tools/track2.py", line 224, in main
+    *_, summary = evaluator.evaluate_TCB(
+                  │         └ <function MOTEvaluator.evaluate_TCB at 0x0000018617AF4160>
+                  └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000018618A30640>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\evaluators\mot_evaluator_dancetrack.py", line 300, in evaluate_TCB
+    outputs = postprocess(outputs,self.num_classes,self.confthre,self.nmsthre)
+              │           │       │    │           │    │        │    └ 0.7
+              │           │       │    │           │    │        └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000018618A30640>
+              │           │       │    │           │    └ 0.01
+              │           │       │    │           └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000018618A30640>
+              │           │       │    └ 1
+              │           │       └ <yolox.evaluators.mot_evaluator_dancetrack.MOTEvaluator object at 0x0000018618A30640>
+              │           └ tensor([[[-2.1709e+02, -4.2022e+02,  7.5332e+01,  ...,  6.7586e-02,
+              │                        7.3135e-02,  8.2841e-02],
+              │                      [-1.6310e+0...
+              └ <function postprocess at 0x00000186664F6D30>
+
+  File "c:\users\user\desktop\labproje\tcbtrack\tcb\yolox\utils\boxes.py", line 63, in postprocess
+    nms_out_index = torchvision.ops.batched_nms(
+                    │           │   └ <function batched_nms at 0x0000018663B180D0>
+                    │           └ <module 'torchvision.ops' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\ops\\__init__.py'>
+                    └ <module 'torchvision' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torchvision\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 75, in batched_nms
+    return _batched_nms_coordinate_trick(boxes, scores, idxs, iou_threshold)
+           │                             │      │       │     └ 0.7
+           │                             │      │       └ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           │                             │      │                 0., 0., 0., 0...
+           │                             │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │                             │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │                             └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │                                       [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │                                       [ 441.379...
+           └ <function _batched_nms_coordinate_trick at 0x0000018663B181F0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\jit\_trace.py", line 1441, in wrapper
+    return fn(*args, **kwargs)
+           │   │       └ {}
+           │   └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.37...
+           └ <function _batched_nms_coordinate_trick at 0x0000018663B18160>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 94, in _batched_nms_coordinate_trick
+    keep = nms(boxes_for_nms, scores, iou_threshold)
+           │   │              │       └ 0.7
+           │   │              └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │   │                        0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │             [ 441.379...
+           └ <function nms at 0x0000018663B114C0>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torchvision\ops\boxes.py", line 41, in nms
+    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)
+           │     │   │           │   │      │       └ 0.7
+           │     │   │           │   │      └ tensor([0.0456, 0.0525, 0.3242, 0.8660, 0.8667, 0.8597, 0.6654, 0.8710, 0.8738,
+           │     │   │           │   │                0.8630, 0.0960, 0.8728, 0.8675, 0.862...
+           │     │   │           │   └ tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │   │           │             [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │   │           │             [ 441.379...
+           │     │   │           └ <OpOverloadPacket(op='torchvision.nms')>
+           │     │   └ <module 'torch.ops.torchvision' from 'torch.ops'>
+           │     └ <module 'torch.ops' from '_ops.py'>
+           └ <module 'torch' from 'C:\\Users\\User\\miniconda3\\envs\\tcb_env\\lib\\site-packages\\torch\\__init__.py'>
+
+  File "C:\Users\User\miniconda3\envs\tcb_env\lib\site-packages\torch\_ops.py", line 1061, in __call__
+    return self_._op(*args, **(kwargs or {}))
+           │     │    │        └ {}
+           │     │    └ (tensor([[ 429.7988,  318.8356,  443.2478,  349.5975],
+           │     │              [ 441.2532,  317.7393,  453.8285,  347.8142],
+           │     │              [ 441.37...
+           │     └ <built-in method nms of PyCapsule object at 0x00000188D7C49C60>
+           └ <OpOverloadPacket(op='torchvision.nms')>
+
+NotImplementedError: Could not run 'torchvision::nms' with arguments from the 'CUDA' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'torchvision::nms' is only available for these backends: [CPU, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradXLA, AutogradMPS, AutogradXPU, AutogradHPU, AutogradLazy, AutogradMeta, Tracer, AutocastCPU, AutocastXPU, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+CPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\cpu\nms_kernel.cpp:112 [kernel]
+Meta: registered at /dev/null:154 [kernel]
+QuantizedCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\quantized\cpu\qnms_kernel.cpp:124 [kernel]
+BackendSelect: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:153 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:497 [backend fallback]
+Functionalize: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\FunctionalizeFallbackKernel.cpp:349 [backend fallback]
+Named: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\NamedRegistrations.cpp:7 [backend fallback]
+Conjugate: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\ZeroTensorFallback.cpp:86 [backend fallback]
+ADInplaceOrView: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:86 [backend fallback]
+AutogradOther: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:53 [backend fallback]
+AutogradCPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:57 [backend fallback]
+AutogradCUDA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:65 [backend fallback]
+AutogradXLA: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:69 [backend fallback]
+AutogradMPS: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:77 [backend fallback]
+AutogradXPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:61 [backend fallback]
+AutogradHPU: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:90 [backend fallback]
+AutogradLazy: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:73 [backend fallback]
+AutogradMeta: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\VariableFallbackKernel.cpp:81 [backend fallback]
+Tracer: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\autograd\TraceTypeManual.cpp:297 [backend fallback]
+AutocastCPU: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:34 [kernel]
+AutocastXPU: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\autocast_mode.cpp:351 [backend fallback]
+AutocastCUDA: registered at C:\actions-runner\_work\vision\vision\pytorch\vision\torchvision\csrc\ops\autocast\nms_kernel.cpp:27 [kernel]
+FuncTorchBatched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:731 [backend fallback]
+BatchedNestedTensor: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\LegacyBatchingRegistrations.cpp:758 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\VmapModeRegistrations.cpp:27 [backend fallback]
+Batched: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\LegacyBatchingRegistrations.cpp:1075 [backend fallback]
+VmapMode: fallthrough registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\VmapModeRegistrations.cpp:33 [backend fallback]
+FuncTorchGradWrapper: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\TensorWrapper.cpp:207 [backend fallback]
+PythonTLSSnapshot: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:161 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\DynamicLayer.cpp:493 [backend fallback]
+PreDispatch: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:165 [backend fallback]
+PythonDispatcher: registered at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\core\PythonFallbackKernel.cpp:157 [backend fallback]
+
+2026-03-10 20:59:21.902 | INFO     | __main__:main:155 - Args: Namespace(batch_size=1, ckpt='models/mot17.pth.tar', conf=0.01, devices=0, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/mot17.py', experiment_name='mot17', fp16=False, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2026-03-10 20:59:22.198 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2026-03-10 20:59:22.229 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.03s)
+2026-03-10 20:59:22.229 | INFO     | pycocotools.coco:__init__:86 - creating index...
+2026-03-10 20:59:22.230 | INFO     | pycocotools.coco:__init__:86 - index created!
+2026-03-10 20:59:22.428 | INFO     | __main__:main:189 - loading checkpoint
+2026-03-10 20:59:22.782 | INFO     | __main__:main:199 - loaded checkpoint done.
+2026-03-10 20:59:22.784 | INFO     | __main__:main:205 - 	Fusing model...
+2026-03-10 21:01:00.063 | INFO     | yolox.evaluators.mot_evaluator_dancetrack:write_results:41 - save results to ./YOLOX_outputs\mot17\track_results\MOT17-02-DPM.txt
