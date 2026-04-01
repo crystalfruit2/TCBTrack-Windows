@@ -12,7 +12,7 @@ This repository is built upon the foundational research of the following teams. 
 * **YOLOX (Object Detection Backbone):** [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
 
 If you utilize this codebase for academic or research purposes, please cite the original TCBTrack paper:
-> *Rui, M., et al. "TCBTrack: Multi-Object Tracking with Temporal Cross-Correlation Bounding Boxes." (2023).*
+> *Zhang, Y., Liang, C., Gao, J., Zhang, Z., Hu, W., Maybank, S., Zhou, X., & Li, L. "Temporal Correlation Meets Embedding: Towards a 2nd Generation of JDE-based Real-Time Multi-Object Tracking." arXiv preprint arXiv:2407.14086 (2024).*
 
 ---
 
