@@ -3,6 +3,8 @@ from loguru import logger
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import os
+import cv2
 
 from yolox.utils import bboxes_iou
 
@@ -10,6 +12,40 @@ import math
 from .losses import IOUloss
 from .network_blocks import BaseConv, DWConv
 import numpy as np
+
+
+
+# --- GÖRSELLEŞTİRME FONKSİYONU BAŞLANGICI ---
+HEATMAP_COUNTER = 0
+
+def save_tcl_heatmap(m_tensor, stride_level, batch_index, save_dir="tcl_heatmaps"):
+    global HEATMAP_COUNTER
+    os.makedirs(save_dir, exist_ok=True)
+    
+    # Tensörü CPU'ya al ve numpy dizisine çevir
+    heatmap_np = m_tensor.detach().cpu().numpy()
+    
+    # 0-255 arasına normalize et
+    heatmap_norm = cv2.normalize(heatmap_np, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+    heatmap_uint8 = np.uint8(heatmap_norm)
+    
+    # Renklendir (JET paleti)
+    heatmap_color = cv2.applyColorMap(heatmap_uint8, cv2.COLORMAP_JET)
+    
+    # Görünür olması için büyüt (Örn: 80x80 -> 800x800)
+    h, w = heatmap_color.shape[:2]
+    heatmap_large = cv2.resize(heatmap_color, (w * 10, h * 10), interpolation=cv2.INTER_NEAREST)
+    
+    # Dosyayı kaydet
+    file_name = f"heatmap_{HEATMAP_COUNTER:05d}_stride_{stride_level}_batch_{batch_index}.jpg"
+    cv2.imwrite(os.path.join(save_dir, file_name), heatmap_large)
+    
+    HEATMAP_COUNTER += 1
+# --- GÖRSELLEŞTİRME FONKSİYONU BİTİŞİ ---
+
+
+
+
 
 class YOLOXHead2(nn.Module):
     def __init__(
@@ -237,6 +273,15 @@ class YOLOXHead2(nn.Module):
                 E = last_reid[batch_idx][k][dims2[batch_idx][k]].view(-1,self.emb_dim)#[n,128]
                 F = reid_feat.view(-1,self.emb_dim).permute(1,0)#[128,h*w]
                 M = torch.div(E@F,torch.linalg.norm(E,dim=1,keepdim=True)@torch.linalg.norm(F,dim=0,keepdim=True))
+                
+                try:
+                    if M.shape[0] > 0: # Eğer eşleşen en az 1 hedef varsa
+                        # M tensörü düzleştirilmiş halde [n, h*w]. İlk hedefi (0. indeks) orijinal H x W boyutuna katlıyoruz
+                        target_m = M[0].view(hsize, wsize) 
+                        save_tcl_heatmap(target_m, stride_level=self.strides[k], batch_index=batch_idx)
+                except Exception as e:
+                    pass # Eğitim akışını bozmamak için olası hataları atlıyoruz
+                
                 #use cosine distance
                 #shape of M: [n,h*w]
                 # TODO: get mask
