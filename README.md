@@ -7,7 +7,7 @@ The original academic codebase was designed for Linux environments and older CUD
 ## 📜 Acknowledgements & Original Citations
 This repository is built upon the foundational research of the following teams. All credit for the core architectures, mathematical models, and baseline training weights goes to the original authors. 
 
-* **TCBTrack (Original Architecture):** [hustvl/TCBTrack](https://github.com/hustvl/TCBTrack)
+* **TCBTrack (Original Architecture):** [yfzhang1214/TCBTrack](https://github.com/yfzhang1214/TCBTrack)
 * **ByteTrack (Base Tracking Logic):** [ifzhang/ByteTrack](https://github.com/ifzhang/ByteTrack)
 * **YOLOX (Object Detection Backbone):** [Megvii-BaseDetection/YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
 

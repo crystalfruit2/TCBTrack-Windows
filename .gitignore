@@ -1,2 +1,7 @@
 TCBTrack/
 TCB/models/mot17.pth.tar
+/TCB/YOLOX_outputs
+/TCB/yolox/models/__pycache__
+/TCB/exps/example/mot/__pycache__
+/TCB/exps/example/mot
+/TCB/YOLOX_outputs

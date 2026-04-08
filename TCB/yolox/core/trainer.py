@@ -95,7 +95,9 @@ class Trainer:
     def train_one_iter(self):
         iter_start_time = time.time()
 
-        inps, targets = self.prefetcher.next()      # imgs and targets,targets:class,tlbr,trackid
+        batch_data = self.prefetcher.next()
+        inps, targets = batch_data[0], batch_data[1]
+
         inps = inps.to(self.data_type)
         targets = targets.to(self.data_type)
         targets.requires_grad = False

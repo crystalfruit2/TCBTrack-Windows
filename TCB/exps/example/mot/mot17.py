@@ -22,7 +22,7 @@ class Exp(MyExp):
         self.data_num_workers = 4
         self.input_size = (800, 1440)
         self.random_size = (18, 32)
-        self.train_ann = "train_half.json"
+        self.train_ann = "train.json"
         self.val_ann = "val_half.json"
         self.test_ann = "train.json"
 
@@ -76,8 +76,9 @@ class Exp(MyExp):
                 max_labels=500,
             ),#dataset.annotations[0][0]:[obj_num,6]:tlbr+classid+trackid
         )
-        total_ids = dataset.nID # need to check: ids start with 0
-        
+        #total_ids = dataset.nID # need to check: ids start with 0
+        total_ids = 500 # for debug, to speed up the training process. Need to be removed for the final version
+
         dataset = MosaicDetection(
             dataset,
             mosaic=not no_aug,

@@ -93,8 +93,12 @@ class Trainer2:
         iter_start_time = time.time()
         torch.cuda.empty_cache()
         torch.cuda.empty_cache()
-        inps, targets,_ = self.prefetcher.next()
+
+        #ek
+        batch_data = self.prefetcher.next()
+        inps, targets = batch_data[0], batch_data[1]
         #print(_[0][-1])
+
         inps = inps.to(self.data_type)
         targets = targets.to(torch.float32)
         targets.requires_grad = False

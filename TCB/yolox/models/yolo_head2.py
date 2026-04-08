@@ -15,7 +15,7 @@ import numpy as np
 
 
 
-# --- GÖRSELLEŞTİRME FONKSİYONU BAŞLANGICI ---
+# HEATMAP visualization counter
 HEATMAP_COUNTER = 0
 
 def save_tcl_heatmap(m_tensor, stride_level, batch_index, save_dir="tcl_heatmaps"):
@@ -41,7 +41,8 @@ def save_tcl_heatmap(m_tensor, stride_level, batch_index, save_dir="tcl_heatmaps
     cv2.imwrite(os.path.join(save_dir, file_name), heatmap_large)
     
     HEATMAP_COUNTER += 1
-# --- GÖRSELLEŞTİRME FONKSİYONU BİTİŞİ ---
+
+# end of HEATMAP visualization function
 
 
 
@@ -274,6 +275,8 @@ class YOLOXHead2(nn.Module):
                 F = reid_feat.view(-1,self.emb_dim).permute(1,0)#[128,h*w]
                 M = torch.div(E@F,torch.linalg.norm(E,dim=1,keepdim=True)@torch.linalg.norm(F,dim=0,keepdim=True))
                 
+                # HEATMAP visualization for the first matched target in the current batch and stride level
+
                 try:
                     if M.shape[0] > 0: # Eğer eşleşen en az 1 hedef varsa
                         # M tensörü düzleştirilmiş halde [n, h*w]. İlk hedefi (0. indeks) orijinal H x W boyutuna katlıyoruz
@@ -282,6 +285,8 @@ class YOLOXHead2(nn.Module):
                 except Exception as e:
                     pass # Eğitim akışını bozmamak için olası hataları atlıyoruz
                 
+                #end of HEATMAP visualization 
+
                 #use cosine distance
                 #shape of M: [n,h*w]
                 # TODO: get mask
