@@ -209,9 +209,13 @@ class YOLOXHead2(nn.Module):
             b = conv.bias.view(self.n_anchors, -1)
             b.data.fill_(-math.log((1 - prior_prob) / prior_prob))
             conv.bias = torch.nn.Parameter(b.view(-1), requires_grad=True)
+
+
     def forward(self,xin, labels=None, imgs=None,last_reid=None,feature_id=None):
         outputs = []
 
+
+        # 3 different scale feature maps, each goes through its own stem, cls_conv, reg_conv, cls_pred, reg_pred, obj_pred, reid_conv and reid_pred
         for k, (cls_conv, reg_conv, stride_this_level, x) in enumerate(
             zip(self.cls_convs, self.reg_convs, self.strides, xin)
         ):
@@ -220,23 +224,26 @@ class YOLOXHead2(nn.Module):
             reg_x = x
             reid_x = x
 
+            # Classification branch
             cls_feat = cls_conv(cls_x)
             cls_output = self.cls_preds[k](cls_feat)
 
+            #Bbox regression and objectness branch
             reg_feat = reg_conv(reg_x)
             reg_output = self.reg_preds[k](reg_feat)
             obj_output = self.obj_preds[k](reg_feat)
 
-
+            # ReID branch
             reid_feat = self.reid_convs[k](reid_x)
             reid_output = self.reid_preds[k](reid_feat)
 
-
+            # Concatenate outputs: [reg_output, obj_output, cls_output, reid_output]
             output = torch.cat([reg_output, obj_output.sigmoid(), cls_output.sigmoid(), reid_output],1)
             outputs.append(output)
 
         self.hw = [x.shape[-2:] for x in outputs]
         yolo_outputs = self.decode_outputs(outputs,dtype=xin[0].type())#[[b,h1,w1,134],[b,h2,w2,134],[b,h3,w2,w3,134]]
+        
         if not self.training:#test
             return torch.cat([x.view(1,-1,1+4+self.num_classes+self.emb_dim) for x in yolo_outputs],dim=1)
         else:#training
