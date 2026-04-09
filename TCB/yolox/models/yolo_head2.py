@@ -241,7 +241,7 @@ class YOLOXHead2(nn.Module):
             output = torch.cat([reg_output, obj_output.sigmoid(), cls_output.sigmoid(), reid_output],1)
             outputs.append(output)
 
-        self.hw = [x.shape[-2:] for x in outputs]
+        self.hw = [x.shape[-2:] for x in outputs] #[[h1,w1],[h2,w2],[h3,w3]] last 2 dimensions of the output feature maps, used for decoding later 
         yolo_outputs = self.decode_outputs(outputs,dtype=xin[0].type())#[[b,h1,w1,134],[b,h2,w2,134],[b,h3,w2,w3,134]]
         
         if not self.training:#test

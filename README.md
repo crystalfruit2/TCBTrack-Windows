@@ -16,7 +16,15 @@ If you utilize this codebase for academic or research purposes, please cite the 
 
 ---
 
-## 🛠️ Key Patches & Modifications
+## � Documentation
+
+For detailed technical documentation of the YOLOX-JDE inference pipeline, including step-by-step code explanations, algorithm breakdowns, and implementation details:
+
+- **[YOLOX-JDE Inference Technical Guide](TCB/YOLOX_JDE_inference_technical_detailed_summary.md)** - Comprehensive guide covering the complete inference pipeline from model loading to output writing, with detailed code explanations and mathematical derivations.
+
+---
+
+## �🛠️ Key Patches & Modifications
 * **Dependency Resolution:** Downgraded specific libraries (`protobuf`, `numpy`) to maintain compatibility with older ONNX and TensorBoard integrations.
 * **Windows File System Fixes:** Bypassed Linux-specific multiprocessing deadlocks and `.sh` dataset splitting scripts.
 * **RTX 50-Series Compatibility (Blackwell):** * Disabled `--fp16` mixed-precision acceleration to prevent Tensor Core deadlocks on unsupported hardware architectures.
