@@ -49,7 +49,13 @@ def postprocess(prediction, num_classes, conf_thre=0.7, nms_thre=0.45):
             image_pred[:, 5 : 5 + num_classes], 1, keepdim=True
         )
 
-        conf_mask = (image_pred[:, 4] * class_conf.squeeze() >= conf_thre).squeeze()    # filter with confidence threshold
+        conf_mask = (image_pred[:, 4] * class_conf.squeeze() >= conf_thre).squeeze()   
+        # filter with confidence threshold
+        # obj_confidence * class_confidence >= threshold 
+        # So: obj_score × class_score ≥ 0.7 (default) is the condition for a box to be kept.
+        # low confidence boxes are removed, which can speed up the NMS stage and improve performance.
+
+
         # _, conf_mask = torch.topk((image_pred[:, 4] * class_conf.squeeze()), 1000)
         # Detections ordered as (x1, y1, x2, y2, obj_conf, class_conf, class_pred)
         # detections = torch.cat((image_pred[:, :5], class_conf, class_pred.float()), 1)  # [all_anchors, 7], bbox + obj + class_conf + clsss
@@ -60,11 +66,14 @@ def postprocess(prediction, num_classes, conf_thre=0.7, nms_thre=0.45):
         if not detections.size(0):
             continue
 
+
+        # Perform non-maximum suppression to eliminate redundant overlapping boxes with lower confidences
+        #
         nms_out_index = torchvision.ops.batched_nms(
-            detections[:, :4],
-            detections[:, 4] * detections[:, 5],
-            detections[:, 6],
-            nms_thre,
+            detections[:, :4], #bbox
+            detections[:, 4] * detections[:, 5], #obj_conf * class_conf, the final confidence score used for NMS
+            detections[:, 6], #class_pred, NMS is performed independently per class
+            nms_thre, #NMS IoU threshold
         )
         detections = detections[nms_out_index]      # detections after NMS
         if output[i] is None:

@@ -243,7 +243,8 @@ class YOLOXHead2(nn.Module):
 
         self.hw = [x.shape[-2:] for x in outputs] #[[h1,w1],[h2,w2],[h3,w3]] last 2 dimensions of the output feature maps, used for decoding later 
         yolo_outputs = self.decode_outputs(outputs,dtype=xin[0].type())#[[b,h1,w1,134],[b,h2,w2,134],[b,h3,w2,w3,134]]
-        
+        #width and height and than put in to exponantial form, and then concatenate with obj_output, cls_output and reid_output, the final output is [batch,h,w,4+1+num_classes+emb_dim]
+
         if not self.training:#test
             return torch.cat([x.view(1,-1,1+4+self.num_classes+self.emb_dim) for x in yolo_outputs],dim=1)
         else:#training
